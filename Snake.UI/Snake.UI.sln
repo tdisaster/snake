@@ -5,6 +5,10 @@ VisualStudioVersion = 15.0.27703.2042
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Snake.UI", "Snake.UI\Snake.UI.csproj", "{140DFAD1-BF2A-4281-B108-1AD3976145D4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SankeRunner", "SankeRunner\SankeRunner.csproj", "{D3330312-C52B-48DC-9AD6-5B8A474DB6BA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SnakeTest", "SnakeTest\SnakeTest.csproj", "{30B08CAD-A88E-4C55-AA48-F05F6F034AE7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{140DFAD1-BF2A-4281-B108-1AD3976145D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{140DFAD1-BF2A-4281-B108-1AD3976145D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{140DFAD1-BF2A-4281-B108-1AD3976145D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3330312-C52B-48DC-9AD6-5B8A474DB6BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3330312-C52B-48DC-9AD6-5B8A474DB6BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3330312-C52B-48DC-9AD6-5B8A474DB6BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3330312-C52B-48DC-9AD6-5B8A474DB6BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{30B08CAD-A88E-4C55-AA48-F05F6F034AE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{30B08CAD-A88E-4C55-AA48-F05F6F034AE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{30B08CAD-A88E-4C55-AA48-F05F6F034AE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{30B08CAD-A88E-4C55-AA48-F05F6F034AE7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

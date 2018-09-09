@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Snake.UI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
-    </Grid>
+        Title="MainWindow" Height="450" Width="392.903">
+	<Grid>
+		<Rectangle Fill="Azure" Margin="0,10,10,0" HorizontalAlignment="Right" Width="365" Height="193" VerticalAlignment="Top"/>
+	</Grid>
 </Window>
