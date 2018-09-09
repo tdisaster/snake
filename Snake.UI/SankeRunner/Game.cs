@@ -38,15 +38,20 @@ namespace SankeRunner
 		Direction GetDirection(Direction defaultDirection, int duration)
 		{
 			ReadKeyDelegate d = Console.ReadKey;
-			IAsyncResult result = d.BeginInvoke(null, null);
 			if (duration <= 0)
 			{
 				return defaultDirection;
 			}
-			result.AsyncWaitHandle.WaitOne(duration);
-			if (result.IsCompleted)
+			if (ReadResult == null || ReadResult.IsCompleted)
 			{
-				ConsoleKeyInfo resultstr = d.EndInvoke(result);
+				ReadResult = d.BeginInvoke(null, null);
+				_oldDelegate = d;
+			}
+
+			ReadResult.AsyncWaitHandle.WaitOne(duration);
+			if (ReadResult.IsCompleted)
+			{
+				ConsoleKeyInfo resultstr = _oldDelegate.EndInvoke(ReadResult);
 				switch (resultstr.Key)
 				{
 					case ConsoleKey.UpArrow:
@@ -64,7 +69,10 @@ namespace SankeRunner
 			return defaultDirection;
 		}
 
-		delegate ConsoleKeyInfo ReadKeyDelegate();
+		private  delegate ConsoleKeyInfo ReadKeyDelegate();
+
+		private ReadKeyDelegate _oldDelegate;
+		private IAsyncResult ReadResult = null;
 
 		private static void PrintSnake(Snake snake)
 		{
@@ -102,12 +110,14 @@ namespace SankeRunner
 			{
 				var s = new Stopwatch();
 				s.Start();
-				var direction = GetDirection(Snake.CurrentDirection, ApplicationSettings.TickSpeed);
+				Console.Write($"\nReading first");
+				var direction = GetDirection( Snake.CurrentDirection, ApplicationSettings.TickSpeed);
 				Console.Write($"\nRead {direction}");
 
 				while (s.ElapsedMilliseconds < ApplicationSettings.TickSpeed)
 				{
-					direction = GetDirection(direction, ApplicationSettings.TickSpeed - (int)s.ElapsedMilliseconds);
+					Console.Write($"\nReading N");
+					direction = GetDirection( direction, ApplicationSettings.TickSpeed - (int)s.ElapsedMilliseconds);
 					Console.Write($"\nRead {direction}");
 				}
 				s.Stop();

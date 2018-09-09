@@ -12,10 +12,5 @@ namespace SankeRunner
 			game.Start();
 			
 		}
-
-		
-
-		
-		
 	}
 }
