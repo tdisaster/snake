@@ -10,6 +10,6 @@ namespace SankeRunner
 	{
 		public static int MatrixSize = 8;
 
-		public static int TickSpeed = 5000;
+		public static int TickSpeed = 500;
 	}
 }

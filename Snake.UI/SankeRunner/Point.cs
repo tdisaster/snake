@@ -1,6 +1,6 @@
 ﻿namespace SankeRunner
 {
-	public struct Point
+	public class Point
 	{
 		public Point(int x, int y)
 		{
@@ -13,5 +13,11 @@
 		{
 			return $"{X}, {Y}";
 		}
+
+		public bool Equals(Point point)
+		{
+			return X == point.X && Y == point.Y;
+		}
+	
 	}
 }

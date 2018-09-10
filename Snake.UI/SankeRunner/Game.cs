@@ -9,6 +9,7 @@ namespace SankeRunner
 	{
 		private Snake Snake { get; set; }
 		private bool IsRunning { get; set; }
+
 		public Game()
 		{
 			Snake = new Snake
@@ -35,6 +36,7 @@ namespace SankeRunner
 			};
 			Snake.SetState();
 		}
+
 		Direction GetDirection(Direction defaultDirection, int duration)
 		{
 			ReadKeyDelegate d = Console.ReadKey;
@@ -42,6 +44,7 @@ namespace SankeRunner
 			{
 				return defaultDirection;
 			}
+
 			if (ReadResult == null || ReadResult.IsCompleted)
 			{
 				ReadResult = d.BeginInvoke(null, null);
@@ -66,10 +69,11 @@ namespace SankeRunner
 						return defaultDirection;
 				}
 			}
+
 			return defaultDirection;
 		}
 
-		private  delegate ConsoleKeyInfo ReadKeyDelegate();
+		private delegate ConsoleKeyInfo ReadKeyDelegate();
 
 		private ReadKeyDelegate _oldDelegate;
 		private IAsyncResult ReadResult = null;
@@ -95,10 +99,12 @@ namespace SankeRunner
 
 				Console.Write("|\n");
 			}
+
 			for (int i = 0; i < snake.State.GetLength(0); i++)
 			{
 				Console.Write('-');
 			}
+
 			Console.Write('+');
 		}
 
@@ -110,36 +116,30 @@ namespace SankeRunner
 			{
 				var s = new Stopwatch();
 				s.Start();
-				Console.Write($"\nReading first");
-				var direction = GetDirection( Snake.CurrentDirection, ApplicationSettings.TickSpeed);
-				Console.Write($"\nRead {direction}");
+				var direction = GetDirection(Snake.CurrentDirection, ApplicationSettings.TickSpeed);
 
 				while (s.ElapsedMilliseconds < ApplicationSettings.TickSpeed)
 				{
-					Console.Write($"\nReading N");
-					direction = GetDirection( direction, ApplicationSettings.TickSpeed - (int)s.ElapsedMilliseconds);
-					Console.Write($"\nRead {direction}");
+					direction = GetDirection(direction, ApplicationSettings.TickSpeed - (int) s.ElapsedMilliseconds);
 				}
+
 				s.Stop();
 				s.Reset();
 				try
 				{
 					Snake.Move(direction, false);
-
 				}
 				catch (GameOverException)
 				{
 					IsRunning = false;
 				}
+
 				PrintSnake(Snake);
 
-				if (IsRunning)
-				{
-					Console.Write($"\nMoved{direction}");
-				}
-				else
+				if (!IsRunning)
 				{
 					Console.WriteLine("\nGame Over");
+					Console.ReadKey();
 				}
 			}
 		}
